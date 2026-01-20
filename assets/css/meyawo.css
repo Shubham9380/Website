@@ -12235,3 +12235,8 @@ pre .code {
 .shoes-title {
   color: #A70000; /* change this color */
 }
+
+
+.portfolio-item {
+  margin-bottom: 30px;
+}
