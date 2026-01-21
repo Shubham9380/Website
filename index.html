@@ -102,58 +102,61 @@
             <p class="section-subtitle">What I Did ?</p>
             <h6 class="section-title mb-6">Portfolio</h6>
             <!-- row -->
-            <div class="row">
-                 <div class="col-md-4">
-                   <a href="ca.html" class="portfolio-card">
-                        <img src="assets/imgs/ca/1.4.png" class="img-responsive rounded"
-                            alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page">
-                        <span class="portfolio-card-overlay">
-                            <span class="portfolio-card-caption">
-                                <h4>App Design</h5>
-                                    <p class="font-weight-normal">Category: UI/UX</p>
-                            </span>
-                        </span>
-                    </a>
-                </div>
-                <div class="col-md-4">
-                   <a href="shoes.html" class="portfolio-card">
-                        <img src="assets/imgs/shoes/Project 30.png" class="img-responsive rounded"
-                            alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page">
-                        <span class="portfolio-card-overlay">
-                            <span class="portfolio-card-caption">
-                                <h4>GO48 Winner</h5>
-                                    <p class="font-weight-normal">Category: Product Design</p>
-                            </span>
-                        </span>
-                    </a>
-                </div>
-                <div class="col-md-4">
-                    <a href="lunchbox.html" class="portfolio-card">
-                        <img class="portfolio-card-img" src="assets/imgs/lunchbox/14.png" class="img-responsive rounded"
-                            alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page">
-                        <span class="portfolio-card-overlay">
-                            <span class="portfolio-card-caption">
-                                <h4>Lunchbox</h5>
-                                    <p class="font-weight-normal">Category: Industrial Design</p>
-                            </span>
-                        </span>
-                    </a>
-                </div>
-                <div class="col-md-4">
-                    <a href="travely.html" class="portfolio-card">
-                        <img class="portfolio-card-img" src="assets/imgs/travely/5.png" class="img-responsive rounded"
-                            alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page">
-                        <span class="portfolio-card-overlay">
-                            <span class="portfolio-card-caption">
-                                <h4>Travelling Platform</h5>
-                                    <p class="font-weight-normal">Category: UI/UX</p>
-                            </span>
-                        </span>
-                    </a>
-                </div>
-            </div><!-- end of row -->
-        </div><!-- end of container -->
-    </section> <!-- end of portfolio section -->
+           <section class="section" id="portfolio">
+  <div class="container text-center">
+    <p class="section-subtitle">What I Did?</p>
+    <h6 class="section-title mb-6">Portfolio</h6>
+
+    <div class="portfolio-accordion">
+
+      <!-- UI/UX PANEL -->
+      <input type="radio" name="portfolio-panel" id="uiux" checked>
+      <label for="uiux" class="portfolio-panel-title">
+        UI / UX Design
+      </label>
+
+      <div class="portfolio-panel-content">
+        <div class="row">
+          <div class="col-md-4 mb-4">
+            <a href="ca.html" class="portfolio-card">
+              <img src="assets/imgs/ca/1.4.png" class="img-responsive rounded">
+            </a>
+          </div>
+
+          <div class="col-md-4 mb-4">
+            <a href="travely.html" class="portfolio-card">
+              <img src="assets/imgs/travely/5.png" class="img-responsive rounded">
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRODUCT DESIGN PANEL -->
+      <input type="radio" name="portfolio-panel" id="product">
+      <label for="product" class="portfolio-panel-title">
+        Product / Industrial Design
+      </label>
+
+      <div class="portfolio-panel-content">
+        <div class="row">
+          <div class="col-md-4 mb-4">
+            <a href="shoes.html" class="portfolio-card">
+              <img src="assets/imgs/shoes/Project 30.png" class="img-responsive rounded">
+            </a>
+          </div>
+
+          <div class="col-md-4 mb-4">
+            <a href="lunchbox.html" class="portfolio-card">
+              <img src="assets/imgs/lunchbox/14.png" class="img-responsive rounded">
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+ <!-- end of portfolio section -->
     
 <!-- start of behance section -->
     <section class="section pt-0">
