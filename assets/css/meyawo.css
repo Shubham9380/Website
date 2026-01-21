@@ -12266,3 +12266,26 @@ pre .code {
 .portfolio-item:hover img {
   transform: scale(1.05);
 }
+
+/* Portfolio filter navbar - force single line */
+
+#portfolio-flters {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: nowrap;        /* 🔥 prevents breaking into multiple lines */
+  list-style: none;
+  padding: 0;
+  margin: 0 0 40px 0;
+}
+
+#portfolio-flters li {
+  cursor: pointer;
+  padding: 8px 18px;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;     /* 🔥 prevents text breaking */
+  border-radius: 30px;
+  transition: all 0.3s ease;
+}
