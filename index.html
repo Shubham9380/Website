@@ -335,3 +335,22 @@ Shubham Sharma. All rights reserved.
 </body>
 
 </html>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+
+<script>
+ // Portfolio filter (OPTIONAL)
+var portfolioIsotope = $('.portfolio-container').isotope({
+  itemSelector: '.portfolio-item',
+  layoutMode: 'fitRows'
+});
+
+$('#portfolio-flters li').on('click', function () {
+  $("#portfolio-flters li").removeClass('active');
+  $(this).addClass('active');
+  portfolioIsotope.isotope({ filter: $(this).data('filter') });
+});
+
+</script>
