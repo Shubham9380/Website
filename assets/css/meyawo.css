@@ -12240,3 +12240,35 @@ pre .code {
 .portfolio-item {
   margin-bottom: 30px;
 }
+/* PORTFOLIO ACCORDION */
+
+.portfolio-accordion input {
+  display: none;
+}
+
+.portfolio-panel-title {
+  display: block;
+  padding: 20px;
+  margin: 20px 0;
+  background: #f5f5f5;
+  font-weight: 600;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+
+.portfolio-panel-title:hover {
+  background: #eae6f7;
+}
+
+.portfolio-panel-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.6s ease, padding 0.3s ease;
+}
+
+input:checked + .portfolio-panel-title + .portfolio-panel-content {
+  max-height: 2000px;
+  padding-top: 20px;
+}
