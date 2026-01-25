@@ -12253,11 +12253,37 @@ pre .code {
   flex-wrap: nowrap;
 }
 
+#portfolio-flters li {
+  display: inline-block;
+  font-weight: 500;
+  color: var(--dark);
+  cursor: pointer;
+  transition: color .3s ease;
+  position: relative;
+  white-space: nowrap;
+}
+
+#portfolio-flters li::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 2px;
+  background-color: var(--primary);
+  transition: width .3s ease;
+}
+
+#portfolio-flters li:hover::after,
+#portfolio-flters li.active::after {
+  width: 100%;
+}
+
 #portfolio-flters li:hover,
 #portfolio-flters li.active {
-    color: var(--primary);
-    border-color: var(--primary);
+  color: var(--primary);
 }
+
 
 .portfolio-img {
     position: relative;
