@@ -12242,13 +12242,15 @@ pre .code {
 }
 
 /*** Project Portfolio ***/
-#portfolio-flters li {
-    display: inline-block;
-    font-weight: 500;
-    color: var(--dark);
-    cursor: pointer;
-    transition: .5s;
-    border-bottom: 2px solid transparent;
+#portfolio-flters {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  padding: 0;
+  margin: 0 0 40px 0;
+  list-style: none;
+  flex-wrap: nowrap;
 }
 
 #portfolio-flters li:hover,
