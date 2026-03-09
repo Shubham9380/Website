@@ -12277,6 +12277,7 @@ pre .code {
     transition: .5s;
 }
 .portfolio-item {
+  position: relative;
   margin-bottom: 30px;
 }
 
