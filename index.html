@@ -180,16 +180,27 @@
   </div>
 </section>
 <!-- end of behnace section -->
-
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
 
 <script>
   // Portfolio filter (OPTIONAL)
-var portfolioIsotope = $('.portfolio-container').isotope({
-  itemSelector: '.portfolio-item',
-  layoutMode: 'fitRows'
+$(document).ready(function(){
+
+  var $grid = $('.portfolio-container').isotope({
+    itemSelector: '.portfolio-item',
+    layoutMode: 'fitRows'
+  });
+
+  $('#portfolio-flters li').on('click', function () {
+
+    $('#portfolio-flters li').removeClass('active');
+    $(this).addClass('active');
+
+    var filterValue = $(this).attr('data-filter');
+    $grid.isotope({ filter: filterValue });
+
+  });
+
 });
 
 </script>
