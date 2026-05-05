@@ -12281,4 +12281,12 @@ pre .code {
   margin-bottom: 30px;
 }
 
+#portfolio .container {
+    max-width: 1400px;   /* increase width */
+}
 
+@media (min-width: 1600px) {
+    #portfolio .container {
+        max-width: 1600px;  /* ultra-wide screens */
+    }
+}
