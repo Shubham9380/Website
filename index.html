@@ -1,362 +1,814 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <link rel="apple-touch-icon" sizes="180x180" href="assets/imgs/android.png">
-
     <link rel="icon" type="image/png" sizes="192x192" href="assets/imgs/apple.png">
     <link rel="icon" type="image/png" href="assets/imgs/fevicon.png">
-    
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
-    <meta name="description" content="Portfolio of Shubham Sharma – Product Designer specializing in UX, 3D, and visual design.">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Portfolio of Shubham Sharma – Product & Industrial Designer specializing in product design, 3D visualization, and mechanical engineering.">
     <meta name="author" content="Shubham Sharma">
-    <title>Shubham Sharma | Product Designer</title>
+    <title>Shubham Sharma — Product / Industrial Design</title>
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://shubhamsharma.net/">
-    <meta property="og:title" content="Shubham Sharma | Product Designer">
-    <meta property="og:description" content="Specializing in UX, 3D, and visual design. Check out my portfolio!">
+    <meta property="og:title" content="Shubham Sharma — Product / Industrial Design">
+    <meta property="og:description" content="Product & Industrial Designer with a Mechanical Engineering background. Portfolio showcasing product design, 3D visualization, and design education.">
     <meta property="og:image" content="https://shubhamsharma.net/assets/imgs/4.png">
 
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://shubhamsharma.net/">
-    <meta property="twitter:title" content="Shubham Sharma | Product Designer">
-    <meta property="twitter:description" content="Specializing in UX, 3D, and visual design. Check out my portfolio!">
+    <meta property="twitter:title" content="Shubham Sharma — Product / Industrial Design">
+    <meta property="twitter:description" content="Product & Industrial Designer with a Mechanical Engineering background.">
     <meta property="twitter:image" content="https://shubhamsharma.net/assets/imgs/4.png">
 
-    <link rel="stylesheet" href="assets/vendors/themify-icons/css/themify-icons.css">
-    <link rel="stylesheet" href="assets/css/meyawo.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --paper:#F7F5EE;
+    --paper-2:#F1EEE4;
+    --graphite:#1C1B19;
+    --line:#9A958C;
+    --hairline:#DEDACC;
+    --blue:#2C57A8;
+    --red:#C1440E;
+    --mono: 'IBM Plex Mono', monospace;
+    --grotesk: 'Space Grotesk', sans-serif;
+    --sans: 'Inter', sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{
+    background:var(--paper);
+    color:var(--graphite);
+    font-family:var(--sans);
+    overflow-x:hidden;
+    cursor:none;
+    height:100%;
+  }
+  a{color:inherit;text-decoration:none;}
+
+  /* ---------- background: grained paper + sparse reference lines ---------- */
+  .grid-bg{ position:fixed; inset:0; z-index:0; pointer-events:none; background-color:var(--paper); }
+  .grid-bg .grain{
+    position:absolute; inset:-10%; width:120%; height:120%;
+    opacity:0.05; mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  }
+  .grid-bg .ref-h{ position:absolute; left:0; right:0; top:38%; height:1px; background:var(--hairline); }
+  .grid-bg .ref-v{ position:absolute; top:0; bottom:0; left:64%; width:1px; background:var(--hairline); }
+  .grid-bg::after{
+    content:""; position:absolute; inset:0;
+    background: radial-gradient(ellipse at 50% 25%, rgba(247,245,238,0) 0%, var(--paper) 82%);
+  }
+  .sheet-frame{ position:fixed; inset:18px; z-index:1; pointer-events:none; border:1px solid var(--hairline); }
+  .reg{ position:fixed; z-index:1; pointer-events:none; width:15px; height:15px; }
+  .reg::before, .reg::after{ content:""; position:absolute; background:var(--line); }
+  .reg::before{ width:100%; height:1px; top:50%; left:0; }
+  .reg::after{ width:1px; height:100%; left:50%; top:0; }
+  .reg span{ position:absolute; width:7px; height:7px; border:1px solid var(--line); border-radius:50%; top:50%; left:50%; transform:translate(-50%,-50%); }
+  .reg.tl{ top:8px; left:8px; } .reg.tr{ top:8px; right:8px; }
+  .reg.bl{ bottom:8px; left:8px; } .reg.br{ bottom:8px; right:8px; }
+  .edge-index{
+    position:fixed; left:26px; top:0; bottom:0; z-index:1; pointer-events:none;
+    display:flex; flex-direction:column; justify-content:space-between; padding:120px 0 60px 0;
+    font-family:var(--mono); font-size:9px; color:var(--line); opacity:0.55; writing-mode:vertical-rl;
+  }
+
+  /* ---------- custom cursor ---------- */
+  #cursor{ position:fixed; top:0; left:0; width:1px; height:1px; pointer-events:none; z-index:999; transform:translate(-50%,-50%); }
+  #cursor .h, #cursor .v{ position:absolute; background:var(--graphite); }
+  #cursor .h{ width:16px; height:1px; top:0; left:-8px; }
+  #cursor .v{ width:1px; height:16px; left:0; top:-8px; }
+  #cursor .coord{
+    position:absolute; top:10px; left:10px; font-family:var(--mono); font-size:9px; color:var(--graphite);
+    white-space:nowrap; background:var(--paper); padding:1px 4px; border:1px solid var(--graphite);
+  }
+  @media (hover:none){ #cursor{display:none;} html,body{cursor:auto;} }
+
+  /* ---------- header ---------- */
+  header{ position:relative; z-index:2; padding:48px 56px 0 56px; }
+  .id-block{ max-width:340px; }
+  .id-block .name{ font-family:var(--grotesk); font-weight:500; font-size:15px; letter-spacing:0.02em; }
+  .id-block .role{ font-family:var(--mono); font-size:10px; color:var(--line); letter-spacing:0.08em; margin-top:4px; text-transform:uppercase; }
+  .id-block .role span{ color:var(--blue); }
+  nav{ position:fixed; top:48px; right:56px; z-index:5; display:flex; gap:28px; font-family:var(--mono); font-size:10px; letter-spacing:0.06em; text-transform:uppercase; }
+  nav a{ opacity:0.6; transition:opacity .2s; } nav a:hover{ opacity:1; }
+
+  /* ================= SHEET ================= */
+  .sheet{
+      position:relative; z-index:2; width:100%;
+      height:calc(100vh - 92px); min-height:650px; max-height:900px;
+      margin-top:20px;
+    }
+
+  .cluster{ position:absolute; }
+  .cluster .connectors{ position:absolute; top:0; left:0; overflow:visible; pointer-events:none; }
+  .cluster .connectors path, .cluster .connectors line{
+    stroke:var(--line); stroke-width:1; fill:none; transition:stroke .25s, stroke-width .25s;
+  }
+  .cluster.active .connectors path, .cluster.active .connectors line{ stroke:var(--blue); }
+  .cluster .connectors circle{ fill:var(--paper); stroke:var(--line); stroke-width:1; transition:stroke .25s, fill .25s; }
+  .cluster.active .connectors circle{ stroke:var(--blue); fill:var(--blue); }
+
+  .artifact{ position:absolute; border:1px solid var(--graphite); background:var(--paper-2); cursor:none;
+    transition:transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s; will-change:transform; overflow:hidden; }
+  .artifact:hover, .artifact.active{ transform:translateY(-3px); box-shadow:0 14px 28px rgba(28,27,25,0.12); }
+  .artifact img{ width:100%; height:100%; object-fit:cover; display:block; }
+
+  .art-render{ background:linear-gradient(160deg,#ECE7D9 0%,#CBC4AF 55%,#8E8873 100%); }
+  .art-sketch{ background:linear-gradient(var(--paper-2),var(--paper-2)),
+      repeating-linear-gradient(115deg, transparent 0 6px, rgba(28,27,25,0.06) 6px 7px); }
+  .art-cad{ background:var(--paper);
+      background-image:linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+      background-size:14px 14px; background-position:center; }
+  .art-section{ background:var(--paper-2);
+      background-image:repeating-linear-gradient(45deg, rgba(44,87,168,0.12) 0 4px, transparent 4px 9px); }
+  .art-mech{ background:var(--paper);
+      background-image:linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+      background-size:10px 10px; background-position:center; }
+
+  .detail-num{
+    position:absolute; font-family:var(--mono); font-size:10px; letter-spacing:.04em;
+    display:flex; align-items:center; gap:6px;
+  }
+  .detail-num .dot{ width:6px; height:6px; border-radius:50%; border:1px solid var(--graphite); background:var(--paper); }
+  .detail-num b{ font-weight:500; }
+  .detail-num .disc{ color:var(--line); text-transform:uppercase; }
+
+  .tiny-label{
+    position:absolute; font-family:var(--mono); font-size:8.5px; color:var(--line);
+    letter-spacing:.03em; text-transform:uppercase; white-space:nowrap;
+    opacity:0; transform:translateY(3px); transition:opacity .25s, transform .25s;
+  }
+  .cluster:hover .tiny-label, .cluster.active .tiny-label{ opacity:1; transform:translateY(0); }
+
+  /* dimension line */
+  .dim{ position:absolute; }
+  .dim .bar{ position:absolute; top:0; left:0; right:0; height:1px; background:var(--line); }
+  .dim .tick{ position:absolute; top:-3px; width:1px; height:7px; background:var(--line); }
+  .dim .tick.l{ left:0; } .dim .tick.r{ right:0; }
+  .dim .val{ position:absolute; top:6px; left:50%; transform:translateX(-50%); font-family:var(--mono); font-size:9px; color:var(--line); white-space:nowrap; }
+
+  .note-tag{
+    position:absolute; font-family:var(--mono); font-size:9px; color:var(--graphite);
+    display:flex; align-items:baseline; gap:5px; white-space:nowrap;
+  }
+  .note-tag .k{ color:var(--line); }
+  .note-tag::before{ content:""; width:3px; height:3px; border-radius:50%; background:var(--line); align-self:center; }
+
+  .rev-tag{ position:absolute; font-family:var(--mono); font-size:8.5px; color:var(--line); letter-spacing:.04em; }
+
+  /* rejected micro marker */
+  .micro-reject{ position:absolute; display:flex; align-items:center; gap:8px; cursor:none; }
+  .micro-reject .mark{ position:relative; width:34px; height:24px; border:1px solid var(--red); opacity:.6; }
+  .micro-reject .mark::before{ content:""; position:absolute; left:-3px; right:-3px; top:50%; height:1px; background:var(--red); transform:rotate(-8deg); }
+  .micro-reject .txt{ font-family:var(--mono); font-size:9px; color:var(--red); letter-spacing:.03em; opacity:.8; }
+  .micro-reject .txt span{ color:var(--line); }
+
+  /* ================= TITLE BLOCK ================= */
+  .title-block{ position:fixed; bottom:24px; right:24px; z-index:5; border:1px solid var(--graphite); background:var(--paper); font-family:var(--mono); font-size:9.5px; width:280px; }
+  .title-block .row{ display:flex; border-top:1px solid var(--graphite); } .title-block .row:first-child{ border-top:none; }
+  .title-block .cell{ padding:6px 8px; flex:1; border-left:1px solid var(--graphite); } .title-block .cell:first-child{ border-left:none; }
+  .title-block .label{ color:var(--line); display:block; font-size:8px; letter-spacing:.06em; margin-bottom:2px; }
+
+  /* ================= REGISTER / INDEX ================= */
+  .index{ position:relative; z-index:2; padding:140px 56px 200px 56px; border-top:1px solid var(--hairline); margin-top:80px; }
+  .index .eyebrow{ font-family:var(--mono); font-size:10px; color:var(--line); letter-spacing:.08em; text-transform:uppercase; margin-bottom:6px; }
+  .index .drawing-no{ font-family:var(--mono); font-size:10px; color:var(--line); margin-bottom:36px; }
+
+  .register{ width:100%; border-collapse:collapse; font-family:var(--mono); }
+  .register thead th{
+    text-align:left; font-size:9px; color:var(--line); text-transform:uppercase; letter-spacing:.06em;
+    font-weight:400; padding:0 16px 10px 0; border-bottom:1px solid var(--graphite);
+  }
+  .register tbody td{ padding:16px 16px 16px 0; border-bottom:1px solid var(--hairline); vertical-align:baseline; }
+  .register tbody tr{ cursor:none; transition:background .2s; }
+  .register tbody tr:hover{ background:var(--paper-2); }
+  .register .cno{ font-size:10px; color:var(--line); width:44px; }
+  .register .ctitle{ font-family:var(--grotesk); font-size:clamp(16px,1.6vw,22px); font-weight:500; }
+  .register .ctitle a{ transition:color .2s; }
+  .register tbody tr:hover .ctitle a{ color:var(--blue); }
+  .register .cdisc{ font-size:10px; color:var(--line); text-transform:uppercase; letter-spacing:.04em; }
+  .register .cyear{ font-size:10px; color:var(--line); }
+  .register .cstatus{ font-size:9px; letter-spacing:.05em; text-transform:uppercase; }
+  .register .cstatus.approved{ color:var(--blue); }
+  .register .cstatus.client{ color:var(--graphite); }
+  .register .cimg{ width:64px; padding-right:12px; }
+  .register .cimg .thumb{ width:52px; height:36px; border:1px solid var(--hairline); overflow:hidden; }
+  .register .cimg .thumb img{ width:100%; height:100%; object-fit:cover; display:block; }
+
+  /* ================= REVEAL PANEL ================= */
+  .panel{ position:fixed; inset:0; z-index:50; background:var(--paper); transform:translateY(100%); transition:transform .5s cubic-bezier(.2,.8,.2,1); padding:56px; overflow-y:auto; }
+  .panel.open{ transform:translateY(0); }
+  .panel-close{ position:absolute; top:48px; right:56px; font-family:var(--mono); font-size:10px; letter-spacing:.06em; text-transform:uppercase; cursor:none; }
+  .panel h2{ font-family:var(--grotesk); font-weight:500; font-size:clamp(30px,5vw,56px); max-width:800px; margin-top:60px; }
+  .panel .meta{ font-family:var(--mono); font-size:10px; color:var(--line); margin-top:14px; letter-spacing:.04em; }
+  .panel .panel-img{ margin-top:36px; max-width:700px; border:1px solid var(--hairline); }
+  .panel .panel-img img{ width:100%; display:block; }
+  .panel .note{ font-family:var(--sans); font-size:14px; color:var(--graphite); max-width:480px; margin-top:32px; line-height:1.6; opacity:0.85; }
+  .panel .view-link{
+    display:inline-block; margin-top:28px; font-family:var(--mono); font-size:11px;
+    letter-spacing:.04em; text-transform:uppercase; color:var(--blue);
+    padding:10px 24px; border:1px solid var(--blue); transition:background .2s, color .2s;
+  }
+  .panel .view-link:hover{ background:var(--blue); color:var(--paper); }
+
+  ::selection{ background:var(--blue); color:var(--paper); }
+
+  /* ================= SCROLL CUE ================= */
+  .scroll-cue{
+    position:absolute; left:50%; bottom:28px; z-index:4;
+    transform:translateX(-50%);
+    font-family:var(--mono); font-size:9px; color:var(--line);
+    letter-spacing:.08em; text-transform:uppercase; text-align:center;
+    cursor:none; transition:color .2s, transform .2s;
+  }
+  .scroll-cue::before{
+    content:""; display:block; width:1px; height:24px;
+    margin:0 auto 7px; background:var(--line);
+    animation:drawline 2.4s ease-in-out infinite;
+    transform-origin:top;
+  }
+  .scroll-cue .arrow{ display:block; margin-top:4px; }
+  .scroll-cue:hover{ color:var(--blue); transform:translateX(-50%) translateY(-2px); }
+  @keyframes drawline{
+    0%,100%{ transform:scaleY(.35); opacity:.45; }
+    50%{ transform:scaleY(1); opacity:1; }
+  }
+
+  .sheet-transition{
+    position:relative; z-index:2;
+    border-top:1px solid var(--graphite);
+    border-bottom:1px solid var(--hairline);
+    padding:14px 56px;
+    display:flex; justify-content:space-between; align-items:center;
+    font-family:var(--mono); font-size:9px; color:var(--line);
+    letter-spacing:.06em; text-transform:uppercase;
+  }
+  .sheet-transition .next{ color:var(--graphite); }
+  .sheet-transition .next::after{ content:"  ↓"; color:var(--blue); }
+
+  /* ================= ABOUT / CONTACT SHEETS ================= */
+  .info-sheet{
+    position:relative; z-index:2;
+    padding:120px 56px 180px;
+    border-top:1px solid var(--hairline);
+  }
+  .info-head{
+    display:flex; justify-content:space-between; align-items:flex-end;
+    padding-bottom:16px; border-bottom:1px solid var(--graphite);
+    font-family:var(--mono); font-size:9px; color:var(--line);
+    text-transform:uppercase; letter-spacing:.06em;
+  }
+  .info-head strong{ color:var(--graphite); font-weight:400; }
+  .info-grid{
+    display:grid; grid-template-columns:minmax(180px, .7fr) minmax(0, 1.8fr);
+    gap:80px; padding-top:48px;
+  }
+  .info-label{
+    font-family:var(--mono); font-size:10px; color:var(--line);
+    text-transform:uppercase; letter-spacing:.06em;
+  }
+  .info-title{
+    margin-top:12px; font-family:var(--grotesk); font-size:clamp(34px,5vw,72px);
+    font-weight:500; line-height:.98;
+  }
+  .info-photo{
+    margin-top:24px; border:1px solid var(--hairline); max-width:240px; overflow:hidden;
+  }
+  .info-photo img{ width:100%; display:block; }
+  .info-copy{
+    max-width:720px; font-family:var(--sans); font-size:15px;
+    line-height:1.75; opacity:.84;
+  }
+  .info-copy p + p{ margin-top:18px; }
+  .info-data{
+    margin-top:42px; display:grid; grid-template-columns:repeat(3,1fr);
+    border-top:1px solid var(--hairline); border-left:1px solid var(--hairline);
+  }
+  .info-data .cell{
+    padding:14px 16px; border-right:1px solid var(--hairline);
+    border-bottom:1px solid var(--hairline);
+  }
+  .info-data .k{
+    display:block; font-family:var(--mono); font-size:8px;
+    color:var(--line); text-transform:uppercase; letter-spacing:.05em;
+    margin-bottom:7px;
+  }
+  .info-data .v{ font-family:var(--mono); font-size:10px; }
+
+  .contact-layout{
+    display:grid; grid-template-columns:1fr 1fr; gap:80px;
+    padding-top:52px;
+  }
+  .availability{
+    font-family:var(--grotesk); font-size:clamp(30px,4vw,56px);
+    line-height:1.02; font-weight:500; max-width:600px;
+  }
+  .contact-register{
+    border-top:1px solid var(--graphite);
+    font-family:var(--mono);
+  }
+  .contact-row{
+    display:grid; grid-template-columns:120px 1fr;
+    padding:15px 0; border-bottom:1px solid var(--hairline);
+    font-size:10px;
+  }
+  .contact-row .k{ color:var(--line); text-transform:uppercase; letter-spacing:.05em; }
+  .contact-row a{ transition:color .2s; }
+  .contact-row a:hover{ color:var(--blue); }
+  .final-note{
+    margin-top:80px; padding-top:12px; border-top:1px solid var(--graphite);
+    display:flex; justify-content:space-between;
+    font-family:var(--mono); font-size:8px; color:var(--line);
+    text-transform:uppercase; letter-spacing:.05em;
+  }
+
+  /* ================= SERVICES DATA (4 cols) ================= */
+  .info-services{
+    margin-top:42px; display:grid; grid-template-columns:repeat(4,1fr);
+    border-top:1px solid var(--hairline); border-left:1px solid var(--hairline);
+  }
+  .info-services .cell{
+    padding:18px 16px; border-right:1px solid var(--hairline);
+    border-bottom:1px solid var(--hairline);
+  }
+  .info-services .k{
+    display:block; font-family:var(--mono); font-size:8px;
+    color:var(--line); text-transform:uppercase; letter-spacing:.05em;
+    margin-bottom:9px;
+  }
+  .info-services .v-title{
+    font-family:var(--grotesk); font-size:13px; font-weight:500; margin-bottom:6px;
+  }
+  .info-services .v-desc{
+    font-family:var(--sans); font-size:11px; color:var(--line); line-height:1.5;
+  }
+
+  /* ================= BEHANCE CTA ================= */
+  .behance-cta{
+    margin-top:48px; display:flex; align-items:center; gap:16px;
+  }
+  .behance-cta a{
+    font-family:var(--mono); font-size:10px; letter-spacing:.04em; text-transform:uppercase;
+    color:var(--blue); padding:10px 20px; border:1px solid var(--blue);
+    transition:background .2s, color .2s;
+  }
+  .behance-cta a:hover{ background:var(--blue); color:var(--paper); }
+  .behance-cta .cta-note{
+    font-family:var(--mono); font-size:9px; color:var(--line); letter-spacing:.03em;
+  }
+
+  @media (max-width:900px){
+    header{ padding:28px 20px 0 20px; }
+    nav{ display:none; }
+    .edge-index, .reg{ display:none; }
+    .title-block{ display:none; }
+    html,body{ cursor:auto; } #cursor{ display:none; }
+    .sheet{ height:auto; min-height:auto; max-height:none; padding:20px; }
+    .cluster{ position:relative !important; top:auto !important; left:auto !important; transform:scale(1) !important; margin-bottom:64px; width:100% !important; }
+    .cluster .connectors{ display:none; }
+    .artifact{ position:relative !important; top:auto !important; left:auto !important; width:100% !important; height:180px !important; margin-bottom:14px; }
+    .detail-num, .tiny-label, .dim, .note-tag, .rev-tag{ position:relative !important; top:auto !important; left:auto !important; opacity:1 !important; transform:none !important; margin-bottom:8px; display:block; }
+    .index{ padding:60px 20px 140px 20px; margin-top:20px; }
+    .sheet-transition{ padding:12px 20px; }
+    .scroll-cue{ bottom:14px; }
+    .info-sheet{ padding:70px 20px 110px; }
+    .info-grid,.contact-layout{ grid-template-columns:1fr; gap:36px; }
+    .info-data{ grid-template-columns:1fr 1fr; }
+    .info-services{ grid-template-columns:1fr 1fr; }
+    .final-note{ margin-top:50px; gap:20px; flex-direction:column; }
+    .register thead{ display:none; }
+    .register tbody td{ display:block; padding:2px 0; border-bottom:none; }
+    .register tbody tr{ display:block; padding:16px 0; border-bottom:1px solid var(--hairline); }
+    .register .cimg{ display:none; }
+    .panel{ padding:28px; } .panel-close{ top:28px; right:20px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){ *{ transition-duration:.01ms !important; } }
+</style>
 </head>
+<body>
 
-<body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
+<div class="grid-bg"><div class="grain"></div><div class="ref-h"></div><div class="ref-v"></div></div>
+<div class="sheet-frame"></div>
+<div class="reg tl"><span></span></div><div class="reg tr"><span></span></div>
+<div class="reg bl"><span></span></div><div class="reg br"><span></span></div>
+<div class="edge-index">SHEET 01 — DESIGN DESK — REV. C</div>
 
-    <!-- Page Navbar -->
-    <nav class="custom-navbar" data-spy="affix" data-offset-top="20">
-        <div class="container">
-            <ul class="nav">
-                <li class="item">
-                    <a class="link" href="#home">Home</a>
-                </li>
-                <li class="item">
-                    <a class="link" href="#about">About</a>
-                </li>
-                <li class="item">
-                    <a class="link" href="#portfolio">Portfolio</a>
-                </li>
-                <li class="item">
-                    <a class="link" href="#contact">Contact</a>
-                </li>
-            </ul>
-            <a href="javascript:void(0)" id="nav-toggle" class="hamburger hamburger--elastic">
-                <div class="hamburger-box">
-                    <div class="hamburger-inner"></div>
-                </div>
-            </a>
-        </div>
-    </nav><!-- End of Page Navbar -->
+<div id="cursor"><div class="h"></div><div class="v"></div><div class="coord" id="coordReadout">X 000 · Y 000</div></div>
 
-    <!-- page header -->
-    <header id="home" class="header">
-        <div class="overlay"></div>
-        <div class="header-content container">
-            <h1 class="header-title">
-                <span class="up">HI!</span>
-                <span class="down">I am Shubham Sharma</span>
-            </h1>
-            <p class="header-subtitle">PRODUCT DESIGNER</p>
+<!-- ================= HEADER ================= -->
+<header id="home">
+  <div class="id-block">
+    <div class="name">SHUBHAM SHARMA</div>
+    <div class="role">Product / Industrial Design <span>·</span> Mechanical Engineering <span>·</span> Faculty</div>
+  </div>
+</header>
+<nav><a href="#index">Index</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
 
-           <a href="#portfolio" class="btn btn-primary d-inline-block">
-              Visit My Works
-           </a>
-        </div>
-    </header><!-- end of page header -->
+<!-- ================= SHEET — FEATURED PROJECTS ================= -->
+<section class="sheet" id="sheet">
 
-    <!-- about section -->
-    <section class="section pt-0" id="about">
-        <!-- container -->
-        <div class="container text-center">
-            <!-- about wrapper -->
-            <div class="about">
-                <div class="about-img-holder">
-                    <img src="assets/imgs/5.png" class="about-img"
-                        alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page">
-                </div>
-                <div class="about-caption">
-                    <p class="section-subtitle">Who Am I ?</p>
-                    <h2 class="section-title mb-3">About Me</h2>
-                    <p>
-                        I recently completed my Master’s in Design, where I discovered my love for turning complex problems into simple, 
-                        beautiful solutions. I aim to design experiences that not only work seamlessly but also bring a sense of joy to every interaction.
-                    </p>
-                </div>
-            </div><!-- end of about wrapper -->
-        </div><!-- end of container -->
-    </section> <!-- end of about section -->
+  <!-- ============ DOMINANT CLUSTER — LUNCHBOX ============ -->
+  <div class="cluster" id="cluster-0" style="top:72px; left:5%; width:610px; height:430px;">
+    <svg class="connectors" width="610" height="430" viewBox="0 0 610 430">
+      <line x1="60" y1="30" x2="150" y2="70"></line><circle cx="60" cy="30" r="3"></circle>
+      <line x1="440" y1="132" x2="500" y2="180"></line><circle cx="500" cy="180" r="3"></circle>
+      <line x1="150" y1="310" x2="92" y2="348"></line><circle cx="92" cy="348" r="3"></circle>
+    </svg>
 
-    <!-- portfolio section -->
-    <section class="section" id="portfolio">
-        <div class="container text-center">
-            <p class="section-subtitle">What I Did ?</p>
-            <h6 class="section-title mb-6">Portfolio</h6>
+    <div class="detail-num" style="top:8px; left:70px;"><span class="dot"></span><b>01</b><span class="disc">Lunchbox — Product</span></div>
 
-               
-                <div class="col-12 text-center">
-                    <ul class="list-inline mx-n3 mb-5" id="portfolio-flters">
-                        <li class="mx-3 active" data-filter="*">All Projects</li>
-                        <li class="mx-3" data-filter=".first">UI/UX Design</li>
-                        <li class="mx-3" data-filter=".second">Product Design</li>
-                    </ul>
-                </div>
-
-            <!-- row -->
-            <div class="row g-4 portfolio-container wow fadeInUp" data-wow-delay="0.1s">
-                
-    <div class="col-lg-4 col-md-6 portfolio-item second">
-        <a href="lunchbox.html" class="portfolio-card">
-            <div class="portfolio-img rounded overflow-hidden">
-                <img class="img-fluid" src="assets/imgs/lunchbox/14.png" alt="Lunchbox Project">
-            </div>
-        </a>
-    </div>
-    <div class="col-lg-4 col-md-6 portfolio-item first">
-        <a href="ca.html" class="portfolio-card">
-            <div class="portfolio-img rounded overflow-hidden">
-                <img class="img-fluid" src="assets/imgs/ca/1.4.png" alt="CA Project">
-            </div>
-        </a>
-    </div>
-                <div class="col-lg-4 col-md-6 portfolio-item first">
-        <a href="calm.html" class="portfolio-card">
-            <div class="portfolio-img rounded overflow-hidden">
-                <img class="img-fluid" src="assets/imgs/calm/12.png" alt="calmpulse Project">
-            </div>
-        </a>
-    </div>
-<div class="col-lg-4 col-md-6 portfolio-item second">
-        <a href="ring.html" class="portfolio-card">
-            <div class="portfolio-img rounded overflow-hidden">
-                <img class="img-fluid" src="assets/imgs/ring/8.png" alt="Ring">
-            </div>
-        </a>
-    </div>
-    <div class="col-lg-4 col-md-6 portfolio-item second">
-        <a href="ghee.html" class="portfolio-card">
-            <div class="portfolio-img rounded overflow-hidden">
-                <img class="img-fluid" src="assets/imgs/ghee/3.png" alt="Ghee Project">
-            </div>
-        </a>
-    </div>
-    <div class="col-lg-4 col-md-6 portfolio-item second">
-        <a href="shoes.html" class="portfolio-card">
-            <div class="portfolio-img rounded overflow-hidden">
-                <img class="img-fluid" src="assets/imgs/shoes/Project 30.png" alt="Shoes Project">
-            </div>
-        </a>
-    </div>
-
-    <div class="col-lg-4 col-md-6 portfolio-item first">
-        <a href="travely.html" class="portfolio-card">
-            <div class="portfolio-img rounded overflow-hidden">
-                <img class="img-fluid" src="assets/imgs/travely/5.png" alt="Travely Project">
-            </div>
-        </a>
-    </div>
-    
-     <div class="col-lg-4 col-md-6 portfolio-item second">
-        <a href="watch.html" class="portfolio-card">
-            <div class="portfolio-img rounded overflow-hidden">
-                <img class="img-fluid" src="assets/imgs/watch/8.png" alt="Watch Project">
-            </div>
-        </a>
-    </div>
-    </div>
-     </section>
- <!-- end of portfolio section -->
-    
-<!-- start of behance section -->
-    <section class="section pt-0">
-  <div class="container text-center">
-
-    <p class="section-subtitle">Explore Full Portfolio</p>
-    <a 
-      href="https://www.behance.net/shubhamsharma124"
-      target="_blank"
-      class="btn btn-outline-primary btn-lg"
-    >
-      View on Behance
+    <!-- main render -->
+    <a href="lunchbox.html" class="artifact art-render" data-project="lunchbox" style="top:58px; left:138px; width:310px; height:248px;">
+      <img src="assets/imgs/lunchbox/14.png" alt="Lunchbox Project — Final Render">
     </a>
+    <div class="tiny-label" style="top:314px; left:138px;">HERO / FINAL RENDER</div>
 
+    <!-- sketch, upper-left -->
+    <a href="ghee.html" class="artifact art-sketch" data-project="ghee" style="top:0; left:0; width:100px; height:74px;">
+      <img src="assets/imgs/ghee/3.png" alt="Swarna Ghee — Concept">
+    </a>
+    <div class="tiny-label" style="top:78px; left:0;">SWARNA — GHEE MAKER</div>
+
+    <!-- section drawing, right -->
+    <a href="ring.html" class="artifact art-section" data-project="ring" style="top:178px; left:490px; width:112px; height:86px;">
+      <img src="assets/imgs/ring/8.png" alt="Ring Collection — Detail">
+    </a>
+    <div class="tiny-label" style="top:268px; left:490px;">RING — DETAIL VIEW</div>
+
+    <!-- dimension -->
+    <div class="dim" style="top:326px; left:138px; width:310px;">
+      <div class="bar"></div><div class="tick l"></div><div class="tick r"></div>
+      <div class="val">PRODUCT DESIGN · FOODWARE</div>
+    </div>
+
+    <!-- material note -->
+    <div class="note-tag" style="top:354px; left:88px;"><span class="k">CATEGORY</span>PRODUCT DESIGN · INDUSTRIAL</div>
+
+    <!-- revision -->
+    <div class="rev-tag" style="top:8px; left:432px;">REV. 03 — APPROVED</div>
   </div>
+
+  <!-- ============ SECONDARY CLUSTER — EYES OF NATURE / WATCH ============ -->
+  <div class="cluster" id="cluster-1" style="top:72px; left:68%; width:265px; height:240px;">
+    <svg class="connectors" width="265" height="240" viewBox="0 0 265 240">
+      <line x1="184" y1="34" x2="184" y2="66"></line><circle cx="184" cy="66" r="2.5"></circle>
+    </svg>
+    <div class="detail-num" style="top:0; left:0;"><span class="dot"></span><b>02</b><span class="disc">Eyes of Nature — Watch</span></div>
+    <a href="watch.html" class="artifact art-render" data-project="watch" style="top:26px; left:0; width:180px; height:140px;">
+      <img src="assets/imgs/watch/8.png" alt="Eyes of Nature — Watch Collection">
+    </a>
+    <div class="tiny-label" style="top:170px; left:0;">CASE — FINAL</div>
+    <a href="ca.html" class="artifact art-cad" data-project="ca" style="top:66px; left:184px; width:80px; height:60px;">
+      <img src="assets/imgs/ca/1.4.png" alt="CA — App Design">
+    </a>
+    <div class="tiny-label" style="top:130px; left:184px;">CA — UI/UX DESIGN</div>
+  </div>
+
+  <!-- ============ SECONDARY CLUSTER — COLLAPSIBLE HEEL / SHOES ============ -->
+  <div class="cluster" id="cluster-2" style="top:455px; left:42%; width:280px; height:205px;">
+    <svg class="connectors" width="280" height="205" viewBox="0 0 280 205">
+      <line x1="160" y1="24" x2="198" y2="56"></line><circle cx="198" cy="56" r="2.5"></circle>
+    </svg>
+    <div class="detail-num" style="top:0; left:0;"><span class="dot"></span><b>03</b><span class="disc">Collapsible Heel — Shoes</span></div>
+    <a href="shoes.html" class="artifact art-render" data-project="shoes" style="top:26px; left:0; width:160px; height:122px;">
+      <img src="assets/imgs/shoes/Project 30.png" alt="Collapsible Heel — Shoe Design">
+    </a>
+    <div class="tiny-label" style="top:150px; left:0;">FOLDED / UNFOLDED</div>
+    <a href="calm.html" class="artifact art-mech" data-project="calm" style="top:56px; left:198px; width:74px; height:55px;">
+      <img src="assets/imgs/calm/12.png" alt="CalmPulse — UI Design">
+    </a>
+    <div class="tiny-label" style="top:113px; left:198px;">CALMPULSE — UI/UX</div>
+  </div>
+
+  <!-- ============ MICRO — REJECTED CONCEPT ============ -->
+  <div class="micro-reject" style="top:620px; left:9%;">
+    <div class="mark"></div>
+    <div class="txt">R.02 <span>— REJECTED — EARLY CONCEPT, ROUND 1</span></div>
+  </div>
+
+  <!-- scroll cue -->
+  <a href="#index" class="scroll-cue">
+    <span class="arrow">↓</span>
+    Scroll to Index
+  </a>
+
 </section>
-<!-- end of behnace section -->
 
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
-
-<script>
-  // Portfolio filter (OPTIONAL)
-var portfolioIsotope = $('.portfolio-container').isotope({
-  itemSelector: '.portfolio-item',
-  layoutMode: 'fitRows'
-});
-
-$('#portfolio-flters li').on('click', function () {
-  $("#portfolio-flters li").removeClass('active');
-  $(this).addClass('active');
-  portfolioIsotope.isotope({
-    filter: $(this).data('filter')
-  });
-});
-
-</script>
-
-
-    <!-- service section -->
-    <section class="section" id="service">
-        <div class="container text-center">
-            <p class="section-subtitle">What I Do ?</p>
-            <h6 class="section-title mb-6">Service</h6>
-            <!-- row -->
-            <div class="row">
-                <div class="col-md-6 col-lg-3">
-                    <div class="service-card">
-                        <div class="body">
-                            <img src="assets/imgs/pencil-case.svg"
-                                alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page"
-                                class="icon">
-                            <h6 class="title">Prototyping</h6>
-                            <p class="subtitle">Turning ideas into testable, functional experiences.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="service-card">
-                        <div class="body">
-                            <img src="assets/imgs/responsive.svg"
-                                alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page"
-                                class="icon">
-                            <h6 class="title">UI/UX</h6>
-                            <p class="subtitle">Designing intuitive interfaces that feel simple and human.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="service-card">
-                        <div class="body">
-                            <img src="assets/imgs/toolbox.svg"
-                                alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page"
-                                class="icon">
-                            <h6 class="title">Visualization</h6>
-                            <p class="subtitle">Crafting clear visuals and renders that tell the product story.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="service-card">
-                        <div class="body">
-                            <img src="assets/imgs/analytics.svg"
-                                alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page"
-                                class="icon">
-                            <h6 class="title">Research</h6>
-                            <p class="subtitle">Understanding users, needs, and constraints before design begins.</p>
-                        </div>
-                    </div>
-                </div>
-            </div><!-- end of row -->
-        </div>
-    </section><!-- end of service section -->
-    
-
-    <!-- section -->
-    <section class="section-sm bg-primary">
-        <!-- container -->
-        <div class="container text-center text-sm-left">
-            <!-- row -->
-            <div class="row align-items-center">
-                <div class="col-sm offset-md-1 mb-4 mb-md-0">
-                    <h6 class="title text-light">Want to work with me?</h6>
-                    <p class="m-0 text-light">Always feel Free to Contact & Hire me</p>
-                </div>
-                <div class="col-sm offset-sm-2 offset-md-3">
-                    <a 
-  href="https://api.whatsapp.com/send/?phone=919557551844&text&type=phone_number&app_absent=0"
-  class="btn btn-lg my-font btn-light rounded"
-  target="_blank"
->
-  Hire Me
-</a>
-
-                </div>
-            </div> <!-- end of row -->
-        </div> <!-- end of container -->
-    </section> <!-- end of section -->
-
-    <!-- contact section -->
-    <section class="section" id="contact">
-        <div class="container text-center">
-            <p class="section-subtitle">How can you communicate?</p>
-            <h6 class="section-title mb-5">Contact Me</h6>
-            <!-- contact form -->
-           <div class="row justify-content-center mt-4">
-
-  <div class="col-md-4 text-center mb-4">
-    <i class="ti-email" style="font-size: 28px;"></i>
-    <h6 class="mt-3">Email</h6>
-    <p>
-      <a href="mailto:idx.shubham@email.com">
-        idx.shubham@gmail.com
-      </a>
-    </p>
+<!-- ================= TITLE BLOCK ================= -->
+<div class="title-block">
+  <div class="row">
+    <div class="cell"><span class="label">Name</span>Shubham Sharma</div>
+    <div class="cell"><span class="label">Sheet</span>01 of 04</div>
   </div>
-
-  <div class="col-md-4 text-center mb-4">
-    <i class="ti-mobile" style="font-size: 28px;"></i>
-    <h6 class="mt-3">WhatsApp</h6>
-    <p>
-      <a href="https://wa.me/919557551844" target="_blank">
-        +91 9557551844
-      </a>
-    </p>
+  <div class="row">
+    <div class="cell"><span class="label">Discipline</span>Product / Industrial</div>
+    <div class="cell"><span class="label">Scale</span>REF. 1 : 1</div>
   </div>
-
-  <div class="col-md-4 text-center mb-4">
-    <i class="ti-location-pin" style="font-size: 28px;"></i>
-    <h6 class="mt-3">Location</h6>
-    <p>Dehradun, India</p>
-  </div>
-
 </div>
 
-                    </div>
-                </div>
-            </form><!-- end of contact form -->
-        </div><!-- end of container -->
-    </section><!-- end of contact section -->
+<!-- ================= SHEET TRANSITION ================= -->
+<div class="sheet-transition">
+  <span>SHEET 01 — DESIGN DESK &nbsp;·&nbsp; REV. C</span>
+  <a class="next" href="#index">SHEET 02 — PROJECT REGISTER</a>
+</div>
 
-    <!-- footer -->
-    <div class="container">
-        <footer class="footer">
-            <p class="mb-0">Copyright
-                <script>document.write(new Date().getFullYear())</script> &copy; <a
-                   &copy; <script></script>
-Shubham Sharma. All rights reserved.
-            </p>
-        </footer>
-    </div> <!-- end of page footer -->
+<!-- ================= PROJECT REGISTER — ALL 8 PROJECTS ================= -->
+<section class="index" id="index">
+  <div class="eyebrow">Project Register</div>
+  <div class="drawing-no">DRAWING NO. SS—INDEX—01 &nbsp;·&nbsp; SHEET 02 OF 04</div>
+  <table class="register">
+    <thead>
+      <tr><th></th><th>No.</th><th>Project</th><th>Discipline</th><th>Year</th><th>Status</th></tr>
+    </thead>
+    <tbody>
+      <tr data-href="lunchbox.html">
+        <td class="cimg"><div class="thumb"><img src="assets/imgs/lunchbox/14.png" alt="Lunchbox"></div></td>
+        <td class="cno">01</td>
+        <td class="ctitle"><a href="lunchbox.html">Lunchbox</a></td>
+        <td class="cdisc">Foodware / Product</td>
+        <td class="cyear">2024</td>
+        <td class="cstatus approved">Approved</td>
+      </tr>
+      <tr data-href="ca.html">
+        <td class="cimg"><div class="thumb"><img src="assets/imgs/ca/1.4.png" alt="CA"></div></td>
+        <td class="cno">02</td>
+        <td class="ctitle"><a href="ca.html">CA</a></td>
+        <td class="cdisc">UI/UX Design</td>
+        <td class="cyear">2024</td>
+        <td class="cstatus approved">Approved</td>
+      </tr>
+      <tr data-href="calm.html">
+        <td class="cimg"><div class="thumb"><img src="assets/imgs/calm/12.png" alt="CalmPulse"></div></td>
+        <td class="cno">03</td>
+        <td class="ctitle"><a href="calm.html">CalmPulse</a></td>
+        <td class="cdisc">UI/UX Design</td>
+        <td class="cyear">2024</td>
+        <td class="cstatus approved">Approved</td>
+      </tr>
+      <tr data-href="ring.html">
+        <td class="cimg"><div class="thumb"><img src="assets/imgs/ring/8.png" alt="Ring"></div></td>
+        <td class="cno">04</td>
+        <td class="ctitle"><a href="ring.html">Ring Collection</a></td>
+        <td class="cdisc">Jewelry / Product</td>
+        <td class="cyear">2023</td>
+        <td class="cstatus approved">Approved</td>
+      </tr>
+      <tr data-href="ghee.html">
+        <td class="cimg"><div class="thumb"><img src="assets/imgs/ghee/3.png" alt="Swarna"></div></td>
+        <td class="cno">05</td>
+        <td class="ctitle"><a href="ghee.html">Swarna</a></td>
+        <td class="cdisc">Kitchen / Product</td>
+        <td class="cyear">2023</td>
+        <td class="cstatus approved">Approved</td>
+      </tr>
+      <tr data-href="shoes.html">
+        <td class="cimg"><div class="thumb"><img src="assets/imgs/shoes/Project 30.png" alt="Collapsible Heel"></div></td>
+        <td class="cno">06</td>
+        <td class="ctitle"><a href="shoes.html">Collapsible Heel</a></td>
+        <td class="cdisc">Footwear / Mechanism</td>
+        <td class="cyear">2023</td>
+        <td class="cstatus approved">Approved</td>
+      </tr>
+      <tr data-href="travely.html">
+        <td class="cimg"><div class="thumb"><img src="assets/imgs/travely/5.png" alt="Travely"></div></td>
+        <td class="cno">07</td>
+        <td class="ctitle"><a href="travely.html">Travely</a></td>
+        <td class="cdisc">UI/UX Design</td>
+        <td class="cyear">2023</td>
+        <td class="cstatus approved">Approved</td>
+      </tr>
+      <tr data-href="watch.html">
+        <td class="cimg"><div class="thumb"><img src="assets/imgs/watch/8.png" alt="Eyes of Nature"></div></td>
+        <td class="cno">08</td>
+        <td class="ctitle"><a href="watch.html">Eyes of Nature</a></td>
+        <td class="cdisc">Watch / Product</td>
+        <td class="cyear">2022</td>
+        <td class="cstatus approved">Approved</td>
+      </tr>
+    </tbody>
+  </table>
 
-    <!-- core  -->
-    <script src="assets/vendors/jquery/jquery-3.4.1.js"></script>
-    <script src="assets/vendors/bootstrap/bootstrap.bundle.js"></script>
+  <!-- Behance CTA -->
+  <div class="behance-cta">
+    <a href="https://www.behance.net/shubhamsharma124" target="_blank" rel="noopener">View Full Portfolio on Behance →</a>
+    <span class="cta-note">EXPLORE ALL PROJECTS</span>
+  </div>
+</section>
 
-    <!-- bootstrap 3 affix -->
-    <script src="assets/vendors/bootstrap/bootstrap.affix.js"></script>
+<!-- ================= ABOUT ================= -->
+<section class="info-sheet" id="about">
+  <div class="info-head">
+    <span>SHEET 03 — DESIGNER / ABOUT</span>
+    <strong>DRAWING NO. SS—ABOUT—01</strong>
+  </div>
 
-    <!-- Meyawo js -->
-    <script src="assets/js/meyawo.js"></script>
+  <div class="info-grid">
+    <div>
+      <div class="info-label">Designer</div>
+      <div class="info-title">Shubham<br>Sharma</div>
+      <div class="info-photo">
+        <img src="assets/imgs/5.png" alt="Shubham Sharma — Product Designer">
+      </div>
+    </div>
+
+    <div>
+      <div class="info-label">Discipline / Background</div>
+      <div class="info-copy">
+        <p>I am a product and industrial designer with a mechanical engineering background, working across product development, 3D visualisation and design education.</p>
+        <p>My approach sits between engineering and design — understanding how a product should look, how it should work, and how it can realistically be made.</p>
+        <p>I recently completed my Master's in Design, where I discovered my love for turning complex problems into simple, beautiful solutions. I aim to design experiences that not only work seamlessly but also bring a sense of joy to every interaction.</p>
+      </div>
+
+      <div class="info-data">
+        <div class="cell"><span class="k">Discipline</span><span class="v">Product / Industrial Design</span></div>
+        <div class="cell"><span class="k">Background</span><span class="v">Mechanical Engineering</span></div>
+        <div class="cell"><span class="k">Practice</span><span class="v">Design · Visualisation · Teaching</span></div>
+      </div>
+
+      <!-- Services -->
+      <div class="info-services">
+        <div class="cell">
+          <span class="k">Service 01</span>
+          <div class="v-title">Prototyping</div>
+          <div class="v-desc">Turning ideas into testable, functional experiences.</div>
+        </div>
+        <div class="cell">
+          <span class="k">Service 02</span>
+          <div class="v-title">UI/UX</div>
+          <div class="v-desc">Designing intuitive interfaces that feel simple and human.</div>
+        </div>
+        <div class="cell">
+          <span class="k">Service 03</span>
+          <div class="v-title">Visualization</div>
+          <div class="v-desc">Crafting clear visuals and renders that tell the product story.</div>
+        </div>
+        <div class="cell">
+          <span class="k">Service 04</span>
+          <div class="v-title">Research</div>
+          <div class="v-desc">Understanding users, needs, and constraints before design begins.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="info-sheet" id="contact">
+  <div class="info-head">
+    <span>SHEET 04 — CONNECT / CONTACT</span>
+    <strong>DRAWING NO. SS—CONTACT—01</strong>
+  </div>
+
+  <div class="contact-layout">
+    <div>
+      <div class="info-label">Available for</div>
+      <div class="availability">Product design, industrial design, 3D visualisation &amp; selected collaborations.</div>
+    </div>
+
+    <div class="contact-register">
+      <div class="contact-row">
+        <span class="k">Email</span>
+        <a href="mailto:idx.shubham@gmail.com">idx.shubham@gmail.com</a>
+      </div>
+      <div class="contact-row">
+        <span class="k">WhatsApp</span>
+        <a href="https://wa.me/919557551844" target="_blank" rel="noopener">+91 9557551844</a>
+      </div>
+      <div class="contact-row">
+        <span class="k">Behance</span>
+        <a href="https://www.behance.net/shubhamsharma124" target="_blank" rel="noopener">behance.net/shubhamsharma124</a>
+      </div>
+      <div class="contact-row">
+        <span class="k">Location</span>
+        <span>Dehradun, India</span>
+      </div>
+      <div class="contact-row">
+        <span class="k">Status</span>
+        <span>OPEN TO SELECT PROJECTS</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="final-note">
+    <span>© <script>document.write(new Date().getFullYear())</script> SHUBHAM SHARMA. ALL RIGHTS RESERVED.</span>
+    <span>SS / DESIGN DESK / REV. C</span>
+  </div>
+</section>
+
+<!-- ================= REVEAL PANEL ================= -->
+<div class="panel" id="panel">
+  <div class="panel-close" id="panelClose">Close ✕</div>
+  <div class="meta" id="panelMeta">Sheet 02 — Project detail</div>
+  <h2 id="panelTitle">Project title</h2>
+  <div class="panel-img" id="panelImg"></div>
+  <div class="note" id="panelNote"></div>
+  <a class="view-link" id="panelLink" href="#">View Full Project →</a>
+</div>
+
+<script>
+  const projects = {
+    lunchbox: { title:"Lunchbox", tag:"Foodware · Product Design · 2024", img:"assets/imgs/lunchbox/14.png", href:"lunchbox.html",
+      note:"A modular lunchbox designed for portability and ease of use, exploring form language in everyday foodware." },
+    ca: { title:"CA", tag:"UI/UX Design · 2024", img:"assets/imgs/ca/1.4.png", href:"ca.html",
+      note:"A user interface and experience design project exploring clean, functional digital interfaces." },
+    calm: { title:"CalmPulse", tag:"UI/UX Design · 2024", img:"assets/imgs/calm/12.png", href:"calm.html",
+      note:"A wellness-focused UI/UX design project centered on mindfulness and user well-being." },
+    ring: { title:"Ring Collection", tag:"Jewelry · Product Design · 2023", img:"assets/imgs/ring/8.png", href:"ring.html",
+      note:"A jewelry collection exploring form, material, and wearability in ring design." },
+    ghee: { title:"Swarna — Ghee Maker", tag:"Kitchen · Product Design · 2023", img:"assets/imgs/ghee/3.png", href:"ghee.html",
+      note:"A kitchen appliance designed for traditional ghee-making, blending heritage with modern product design." },
+    shoes: { title:"Collapsible Heel", tag:"Footwear · Mechanism Design · 2023", img:"assets/imgs/shoes/Project 30.png", href:"shoes.html",
+      note:"An innovative footwear concept featuring a collapsible heel mechanism for versatile everyday use." },
+    travely: { title:"Travely", tag:"UI/UX Design · 2023", img:"assets/imgs/travely/5.png", href:"travely.html",
+      note:"A travel application UI/UX concept designed to simplify trip planning and discovery." },
+    watch: { title:"Eyes of Nature — Watch Collection", tag:"Watch · Product Design · 2022", img:"assets/imgs/watch/8.png", href:"watch.html",
+      note:"A watch collection drawing inspiration from natural patterns and organic forms." }
+  };
+
+  // ===== Custom cursor =====
+  const cursor = document.getElementById('cursor');
+  const coord = document.getElementById('coordReadout');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isTouch = window.matchMedia('(hover:none)').matches;
+
+  if(!isTouch){
+    window.addEventListener('mousemove', (e)=>{
+      cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+      coord.textContent = `X ${String(e.clientX).padStart(3,'0')} · Y ${String(e.clientY).padStart(3,'0')}`;
+    });
+  }
+
+  // ===== Scroll cue fade =====
+  const scrollCue = document.querySelector('.scroll-cue');
+  if(scrollCue){
+    window.addEventListener('scroll', ()=>{
+      scrollCue.style.opacity = window.scrollY > 80 ? '0' : '1';
+      scrollCue.style.pointerEvents = window.scrollY > 80 ? 'none' : 'auto';
+    }, {passive:true});
+  }
+
+  // ===== Parallax clusters =====
+  if(!reduceMotion){
+    const clusters = document.querySelectorAll('.cluster');
+    window.addEventListener('scroll', ()=>{
+      const y = window.scrollY;
+      clusters.forEach((c,i)=>{
+        const depth = 0.02 + (i % 3) * 0.015;
+        c.style.transform = `translateY(${y*depth*-1}px)`;
+      });
+    }, {passive:true});
+  }
+
+  // ===== Cluster hover =====
+  document.querySelectorAll('.cluster').forEach(c=>{
+    c.addEventListener('mouseenter', ()=> c.classList.add('active'));
+    c.addEventListener('mouseleave', ()=> c.classList.remove('active'));
+  });
+
+  // ===== Panel =====
+  const panel = document.getElementById('panel');
+  const panelTitle = document.getElementById('panelTitle');
+  const panelMeta = document.getElementById('panelMeta');
+  const panelImg = document.getElementById('panelImg');
+  const panelNote = document.getElementById('panelNote');
+  const panelLink = document.getElementById('panelLink');
+
+  document.querySelectorAll('[data-project]').forEach(el=>{
+    el.addEventListener('click', (e)=>{
+      e.preventDefault();
+      const id = el.getAttribute('data-project');
+      const p = projects[id];
+      if(!p) return;
+      panelTitle.textContent = p.title;
+      panelMeta.textContent = `Sheet 02 — ${p.tag}`;
+      panelImg.innerHTML = `<img src="${p.img}" alt="${p.title}">`;
+      panelNote.textContent = p.note;
+      panelLink.href = p.href;
+      panel.classList.add('open');
+    });
+  });
+  document.getElementById('panelClose').addEventListener('click', ()=> panel.classList.remove('open'));
+
+  // ===== Register row click =====
+  document.querySelectorAll('.register tbody tr[data-href]').forEach(row=>{
+    row.addEventListener('click', (e)=>{
+      if(e.target.tagName === 'A') return; // let direct link clicks through
+      const id = row.querySelector('[data-project]')
+        ? row.querySelector('[data-project]').getAttribute('data-project')
+        : null;
+      window.location.href = row.getAttribute('data-href');
+    });
+    row.style.cursor = 'pointer';
+  });
+</script>
 
 </body>
-
 </html>
